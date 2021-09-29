@@ -1,6 +1,8 @@
 const Joi = require('joi');
 const ApiError = require('./api-error');
 const { DATA_VALIDATION_ERROR } = require('../response/error');
+const config = require('config');
+const moment = require('moment');
 
 const validate = (schema) => (req, res, next) => {
     const validSchema = pick(schema, ['params', 'query', 'body']);
@@ -19,6 +21,13 @@ const validate = (schema) => (req, res, next) => {
     }
     Object.assign(req, value);
     return next();
+};
+
+const generateToken = (secret = config.jwt.secret) => {
+    const payload = {
+      iat: moment().unix(),
+    };
+    return jwt.sign(payload, secret);
 };
 
 const pick = (object, keys) => {
@@ -41,5 +50,6 @@ const sendSuccessResponse = (res, success, data = {}) => {
 module.exports = {
     pick,
     validate,
-    sendSuccessResponse
+    sendSuccessResponse,
+    generateToken
 }
