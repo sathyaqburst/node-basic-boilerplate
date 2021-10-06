@@ -1,10 +1,10 @@
 const { GETALL_SUCCESS } = require('../response/success');
-const userModel = require('../models/user.model');
-const { sendSuccessResponse } = require('../utils/helper');
+const UserModel = require('../models/user.model');
+const { sendSuccessResponse } = require('../services/helper');
 
 const getAll = async (req, res) => {
-    console.log(req)
-    const userList = await userModel.getAll();
+    const userList = await UserModel.find({});
+    console.log(userList)
     sendSuccessResponse(res, GETALL_SUCCESS, { list : userList })
 }
 

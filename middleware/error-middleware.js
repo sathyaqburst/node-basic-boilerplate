@@ -1,6 +1,6 @@
 const { INTERNAL_SERVER_ERROR } = require('../response/error');
-const ApiError = require('../utils/api-error');
-const logger = require('../utils/winston');
+const ApiError = require('../services/api-error');
+const logger = require('../services/winston');
 
 const catchAsync = (fn) => (req, res, next) => {
     Promise.resolve(fn(req, res, next)).catch((err) => next(err));

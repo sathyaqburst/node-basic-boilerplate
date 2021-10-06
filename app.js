@@ -2,11 +2,11 @@
 // Module Imports
 const express = require('express');
 const app = express();
-const ApiError = require('./utils/api-error');
+const ApiError = require('./services/api-error');
 const { errorHandler, errorConverter, catchAsync } = require('./middleware/error-middleware');
 const userRoutes = require('./routes/user.route');
 const passport = require('passport');
-const { jwtStrategy } = require('./utils/passport');
+const { jwtStrategy } = require('./services/passport');
 
 // Parse json request body
 app.use(express.json());

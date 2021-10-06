@@ -47,9 +47,14 @@ const sendSuccessResponse = (res, success, data = {}) => {
     });
 }
 
+async function connectMongo() {
+    await mongoose.connect(config.mongodb.connectionString);
+}
+
 module.exports = {
     pick,
     validate,
     sendSuccessResponse,
-    generateToken
+    generateToken,
+    connectMongo
 }
