@@ -8,6 +8,12 @@ const getAll = async (req, res) => {
     sendSuccessResponse(res, GETALL_SUCCESS, { list : userList })
 }
 
+const create = async (req, res) => {
+    // const user = await UserModel.create({});
+    // sendSuccessResponse(res, GETALL_SUCCESS, { user : user })
+}
+
 module.exports = {
-    getAll
+    getAll,
+    create
 }

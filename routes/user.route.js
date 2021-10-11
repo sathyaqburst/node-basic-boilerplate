@@ -9,5 +9,6 @@ const passport =require('passport');
 
 // User Routes
 userRoutes.get('/getAll', validate(userValidator.getAll), passport.authenticate('jwt', { session: false }), catchAsync(userController.getAll));
+userRoutes.post('/create', catchAsync(userController.create));
 
 module.exports = userRoutes;
